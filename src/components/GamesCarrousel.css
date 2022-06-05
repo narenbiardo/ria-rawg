@@ -1,0 +1,13 @@
+button.slick-arrow:before {
+	position: absolute;
+	font-size: 3rem;
+	top: -45%;
+}
+
+button.slick-next:before {
+	left: 20%;
+}
+
+button.slick-prev:before {
+	right: 20%;
+}
