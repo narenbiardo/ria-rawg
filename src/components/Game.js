@@ -4,7 +4,7 @@ import "./Game.css";
 
 const Game = () => {
 	return (
-		<div className={"mt-2 bg-dark gameCard"}>
+		<div className={"mt-2 me-5 bg-dark gameCard rounded"}>
 			<Image className="p-3" src="nosborn-que-galan.jpg"></Image>
 			<div className="gameInfo">
 				<p>Titulo</p>

@@ -11,3 +11,12 @@ button.slick-next:before {
 button.slick-prev:before {
 	right: 20%;
 }
+
+ul.slick-dots li button:before {
+	font-size: 1.2rem;
+	color: #0e60b3;
+}
+
+ul.slick-dots li.slick-active button:before {
+	color: #29e6df;
+}
