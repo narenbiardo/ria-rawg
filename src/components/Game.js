@@ -2,12 +2,12 @@ import Image from "react-bootstrap/Image";
 
 import "./Game.css";
 
-const Game = () => {
+const Game = props => {
 	return (
 		<div className={"mt-2 me-5 bg-dark gameCard rounded"}>
-			<Image className="p-3" src="nosborn-que-galan.jpg"></Image>
+			<Image className="gameImage p-3" src={props.image}></Image>
 			<div className="gameInfo">
-				<p>Titulo</p>
+				<p>{props.title}</p>
 				<p>Descripcion</p>
 			</div>
 			<div className="gameLogos">
