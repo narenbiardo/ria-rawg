@@ -19,29 +19,35 @@ const GamesCarrousel = props => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 	};
-	//const [turnNum, setTurnNum] = useState(0);
-	const [gameTitle, setGameTitle] = useState("");
-	const [gameImage, setGameImage] = useState("");
+
+	const [gamesData, setGamesData] = useState([]);
 
 	useEffect(() => {
 		const data = Promise.resolve(
 			getNewPopularGames().then(promise => {
-				setGameTitle(promise.results[0].name);
-				setGameImage(promise.results[0].background_image);
+				setGamesData(promise.results);
 			})
 		);
 	});
 
 	return (
-		<Slider {...settings} className="mt-5 mb-5 w-75 h-100 mx-auto sm">
-			<Game
-				classes={"mt-2 bg-dark text-white"}
-				title={gameTitle}
-				image={gameImage}
-			></Game>
-			<Game></Game>
-			<Game classes={"mt-2 bg-dark text-white"}></Game>
-			<Game></Game>
+		<Slider {...settings} className="my-5 w-75 mx-auto gamesSlider">
+			{gamesData.map(gameData => (
+				<Game
+					key={gameData.name}
+					classes={"mt-2 bg-dark text-white"}
+					title={gameData.name}
+					image={gameData.background_image}
+					short_screenshots={gameData.short_screenshots.slice(1, 5)}
+					genres={gameData.genres}
+					esrb={
+						gameData.esrb_rating == null
+							? "./esrb/rating-pending.webp"
+							: "./esrb/" + gameData.esrb_rating.slug + ".webp"
+					}
+					platforms={gameData.parent_platforms}
+				></Game>
+			))}
 		</Slider>
 	);
 };

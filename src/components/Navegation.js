@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 const Navegation = () => {
 	return (
 		<Navbar className="mb-2" bg="dark" variant="dark" expand="lg">
-			<Container fluid>
+			<Container className="w-75 py-2">
 				<Navbar.Brand href="#">
 					<img
 						src="rawg-logo.png"
@@ -18,7 +18,7 @@ const Navegation = () => {
 						alt="React Bootstrap logo"
 					/>
 				</Navbar.Brand>
-				<Form className="d-flex w-25">
+				<Form className="d-flex w-25 ms-3">
 					<FormControl
 						type="search"
 						placeholder="Buscar"
@@ -30,7 +30,7 @@ const Navegation = () => {
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
 					<Nav
-						className="ms-auto my-2 my-lg-0"
+						className="ms-auto my-2 my-lg-0 fs-4"
 						style={{ maxHeight: "100px" }}
 						navbarScroll
 					>
@@ -39,10 +39,18 @@ const Navegation = () => {
 							title="Consolas"
 							id="navbarScrollingDropdown"
 						>
-							<NavDropdown.Item href="#action1">PC</NavDropdown.Item>
-							<NavDropdown.Item href="#action2">Playstation</NavDropdown.Item>
-							<NavDropdown.Item href="#action3">Xbox</NavDropdown.Item>
-							<NavDropdown.Item href="#action4">Nintendo</NavDropdown.Item>
+							<NavDropdown.Item className="fs-5" href="#action1">
+								PC
+							</NavDropdown.Item>
+							<NavDropdown.Item className="fs-5" href="#action2">
+								Playstation
+							</NavDropdown.Item>
+							<NavDropdown.Item className="fs-5" href="#action3">
+								Xbox
+							</NavDropdown.Item>
+							<NavDropdown.Item className="fs-5" href="#action4">
+								Nintendo
+							</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>

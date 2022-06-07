@@ -1,3 +1,7 @@
+.gamesSlider {
+	position: relative;
+}
+
 button.slick-arrow:before {
 	position: absolute;
 	font-size: 3rem;

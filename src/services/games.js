@@ -14,7 +14,7 @@ export const getNewPopularGames = () => {
 	const apiUrl = getApiKey(`games`, `metacritic=80,100&ordering=-released`);
 	return axios
 		.get(
-			"https://thingproxy.freeboard.io/fetch/https://api.rawg.io/api/games?key=6f1ef9aae1e142ee9eb1f59b6f7b5484&metacritic=80,100&ordering=-released"
+			"https://thingproxy.freeboard.io/fetch/https://api.rawg.io/api/games?key=4e3dd2feb5424a7abc92ce81ba1e1bd9&metacritic=80,100&ordering=-released"
 		)
 		.then(res => res.data);
 };
