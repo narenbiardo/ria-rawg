@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-const Navegation = () => {
+const Navegation = props => {
 	return (
 		<Navbar className="mb-2" bg="dark" variant="dark" expand="lg">
 			<Container className="w-75 py-2">
@@ -18,15 +18,22 @@ const Navegation = () => {
 						alt="React Bootstrap logo"
 					/>
 				</Navbar.Brand>
-				<Form className="d-flex w-25 ms-3">
-					<FormControl
+				<form className="d-flex ms-3">
+					<label className="d-none">Buscar:</label>
+					<input
+						className="rounded-3"
 						type="search"
-						placeholder="Buscar"
-						className="me-3"
-						aria-label="Search"
+						name="buscar"
+						onChange={props.handlerSearchGame}
 					/>
-					<Button variant="outline-success">Buscar</Button>
-				</Form>
+					<Button
+						variant="outline-success"
+						onClick={props.handleUnmountGamesCarrousel}
+						className={"ms-3"}
+					>
+						Buscar
+					</Button>
+				</form>
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
 					<Nav

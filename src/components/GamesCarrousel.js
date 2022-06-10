@@ -30,11 +30,13 @@ const GamesCarrousel = props => {
 		);
 	});
 
-	return (
+	return props.mountGamesCarrousel === false ? (
+		""
+	) : (
 		<Slider {...settings} className="my-5 w-75 mx-auto gamesSlider">
 			{gamesData.map(gameData => (
 				<Game
-					key={gameData.name}
+					key={gameData.id}
 					classes={"mt-2 bg-dark text-white"}
 					title={gameData.name}
 					image={gameData.background_image}

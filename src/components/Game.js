@@ -22,8 +22,12 @@ const Game = props => {
 	return (
 		<div className={"mt-2 bg-dark gameCard container-fluid"}>
 			<Row className="p-3 p-md-4 p-lg-5">
-				<Col className="cholo" lg={8} md={6} sm={12}>
-					<Image className="gameImage" src={props.image}></Image>
+				<Col className="imgCol" lg={8} md={6} sm={12}>
+					<Image
+						className="gameImage"
+						src={props.image}
+						key={props.image}
+					></Image>
 					<Image className="gamePegi" src={props.esrb} fluid></Image>
 				</Col>
 				<Col
@@ -65,20 +69,21 @@ const Game = props => {
 							></Image>
 						))}
 					</div>
-					<Modal
-						className="modal-xl mx-auto sm"
-						show={show}
-						onClick={handleClose}
-						onHide={handleClose}
-					>
-						<Image
-							className="gameModaleImage"
-							src={image}
-							onClick={imageHandler}
-						></Image>
-					</Modal>
 				</Col>
 			</Row>
+			<Modal
+				key={image}
+				show={show}
+				onClick={handleClose}
+				onHide={handleClose}
+				centered
+			>
+				<Image
+					className="gameModaleImage"
+					src={image}
+					onClick={imageHandler}
+				></Image>
+			</Modal>
 		</div>
 	);
 };
