@@ -4,26 +4,17 @@ import ListMinimalGame from "./components/ListMinimalGame";
 import { useState } from "react";
 
 const App = () => {
-	const [mountGamesCarrousel, setMountGamesCarrousel] = useState(true);
 	const [searchGame, setSearchGame] = useState("");
-	const handleUnmountGamesCarrousel = () => {
-		setMountGamesCarrousel(false);
-	};
+
 	const handlerSearchGame = event => {
-		setSearchGame(event.target.value);
+		event.target.value != undefined
+			? setSearchGame(event.target.value)
+			: setSearchGame("");
 	};
 	return (
-		<MainLayout
-			handleUnmountGamesCarrousel={handleUnmountGamesCarrousel}
-			handlerSearchGame={handlerSearchGame}
-		>
-			<GamesCarrousel
-				mountGamesCarrousel={mountGamesCarrousel}
-			></GamesCarrousel>
-			<ListMinimalGame
-				mountGamesCarrousel={mountGamesCarrousel}
-				searchGame={searchGame}
-			></ListMinimalGame>
+		<MainLayout handlerSearchGame={handlerSearchGame}>
+			<GamesCarrousel searchGame={searchGame}></GamesCarrousel>
+			<ListMinimalGame searchGame={searchGame}></ListMinimalGame>
 		</MainLayout>
 	);
 };

@@ -9,7 +9,7 @@ import cors from "cors";
 		"Access-Control-Allow-Methods": "*",
 	},
 });*/
-const API = "13ab39111a4a4b83a591432a768e48d5";
+const API = "653726417dd44f31b525dfebe2ddb2aa";
 
 export const getNewPopularGames = () => {
 	const apiUrl = getApiKey(`games`, `metacritic=80,100&ordering=-released`);
@@ -45,5 +45,12 @@ export const getGame = gameKey => {
 	const apiUrl = getApiKey(`games`, `metacritic=80,100&ordering=-released`);
 	return axios
 		.get(`https://api.rawg.io/api/games/${gameKey}?key=${API}`)
+		.then(res => res.data);
+};
+
+export const getGameScreenshots = gameKey => {
+	const apiUrl = getApiKey(`games`, `metacritic=80,100&ordering=-released`);
+	return axios
+		.get(`https://api.rawg.io/api/games/${gameKey}/screenshots?key=${API}`)
 		.then(res => res.data);
 };

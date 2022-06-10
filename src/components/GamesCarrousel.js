@@ -1,7 +1,3 @@
-import Carousel from "react-bootstrap/Carousel";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
 import Slider from "react-slick";
 import Game from "./Game";
 import { getNewPopularGames } from "../services/games";
@@ -30,13 +26,11 @@ const GamesCarrousel = props => {
 		);
 	});
 
-	return props.mountGamesCarrousel === false ? (
-		""
-	) : (
+	return props.searchGame == "" ? (
 		<Slider {...settings} className="my-5 w-75 mx-auto gamesSlider">
 			{gamesData.map(gameData => (
 				<Game
-					key={gameData.id}
+					key={gameData.id + Math.random()}
 					classes={"mt-2 bg-dark text-white"}
 					title={gameData.name}
 					image={gameData.background_image}
@@ -51,6 +45,8 @@ const GamesCarrousel = props => {
 				></Game>
 			))}
 		</Slider>
+	) : (
+		""
 	);
 };
 export default GamesCarrousel;

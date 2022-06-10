@@ -1,25 +1,37 @@
 import MinimalGame from "./MinimalGame";
 import Game from "./Game";
 
-import { getGame, getNewerGames, getGamesByName } from "../services/games";
-import { Row, Col } from "react-bootstrap";
+import {
+	getGame,
+	getNewerGames,
+	getGamesByName,
+	getGameScreenshots,
+} from "../services/games";
+import { Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 const ListMinimalGame = props => {
 	const [newerGamesData, setNewerGamesData] = useState([]);
 	const [page, setPage] = useState(1);
 	const [lastPage, setLastPage] = useState(1);
+	const [searchingNewGame, setSearchingNewGame] = useState("");
 	const [mountListMinimalGame, setMountListMinimalGame] = useState(true);
 	const [gameKey, setGameKey] = useState(0);
 	const [game, setGame] = useState([]);
+	const [gameScreenshots, setGameScreenshots] = useState([]);
 
 	const pageHandler = event => {
 		setPage(parseInt(event.target.value));
 	};
 
 	useEffect(() => {
+		const searchGame =
+			props.searchGame != searchingNewGame
+				? (setPage(1), setSearchingNewGame(props.searchGame))
+				: "";
+
 		const data =
-			props.mountGamesCarrousel === true
+			props.searchGame == ""
 				? Promise.resolve(
 						getNewerGames(page).then(promise => {
 							setNewerGamesData(promise.results);
@@ -35,24 +47,27 @@ const ListMinimalGame = props => {
 	}, [page, props.searchGame]);
 
 	const handlerGameKey = event => {
-		/* setGameKey(event.target.querySelector("input").value); */
+		setGameKey(event.target.value);
 	};
 
-	const showGame = () => {
-		/*setMountListMinimalGame(false);*/
-	};
-
-	/*
 	useEffect(() => {
 		const data = Promise.resolve(
 			getGame(gameKey).then(promise => {
-				setGame(promise.results);
-				setLastPage(parseInt(promise.count / 20));
-				showGame();
-				console.log(gameKey);
+				setGame(promise);
+				setMountListMinimalGame(false);
 			})
 		);
-	}, [gameKey]);*/
+
+		const data2 = Promise.resolve(
+			getGameScreenshots(gameKey).then(promise => {
+				setGameScreenshots(promise.results);
+			})
+		);
+	}, [gameKey]);
+
+	const gameListBack = () => {
+		setMountListMinimalGame(true);
+	};
 
 	return mountListMinimalGame === true ? (
 		<div className="px-5">
@@ -60,14 +75,13 @@ const ListMinimalGame = props => {
 				{newerGamesData.map(gameData => (
 					<Col className="my-1" xs={12} md={6}>
 						<MinimalGame
-							key={gameData.id}
+							key={gameData.id + Math.random()}
 							id={gameData.id}
 							handlerGameKey={handlerGameKey}
 							classes={"mt-2 bg-dark text-white"}
 							title={gameData.name}
 							genres={gameData.genres}
 							platforms={gameData.parent_platforms}
-							showGame={showGame}
 						></MinimalGame>
 					</Col>
 				))}
@@ -212,21 +226,32 @@ const ListMinimalGame = props => {
 			</div>
 		</div>
 	) : (
-		""
-		/*<Game
-			key={game.id}
-			classes={"mt-2 bg-dark text-white"}
-			title={game.name}
-			image={game.background_image}
-			short_screenshots={game.short_screenshots.slice(1, 5)}
-			genres={game.genres}
-			esrb={
-				game.esrb_rating == null
-					? "./esrb/rating-pending.webp"
-					: "./esrb/" + game.esrb_rating.slug + ".webp"
-			}
-			platforms={game.parent_platforms}
-		></Game>*/
+		<Container className="my-5 w-75 mx-auto">
+			<Game
+				key={game.id + Math.random()}
+				classes={"mt-2 bg-dark text-white"}
+				title={game.name}
+				image={game.background_image}
+				short_screenshots={
+					gameScreenshots != [] ? gameScreenshots.slice(0, 4) : ""
+				}
+				genres={game.genres}
+				esrb={
+					game.esrb_rating == null
+						? "./esrb/rating-pending.webp"
+						: "./esrb/" + game.esrb_rating.slug + ".webp"
+				}
+				platforms={game.parent_platforms}
+			></Game>
+			<Col className=" mt-4 text-center">
+				<button
+					className="btn btn-light btn-outline-dark btn-lg mx-1 border-0"
+					onClick={gameListBack}
+				>
+					Volver
+				</button>
+			</Col>
+		</Container>
 	);
 };
 export default ListMinimalGame;

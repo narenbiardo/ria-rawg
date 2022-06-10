@@ -1,9 +1,6 @@
 import Image from "react-bootstrap/Image";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { Row, Col, Modal } from "react-bootstrap";
+import { useState } from "react";
 
 import "./Game.css";
 
@@ -23,11 +20,7 @@ const Game = props => {
 		<div className={"mt-2 bg-dark gameCard container-fluid"}>
 			<Row className="p-3 p-md-4 p-lg-5">
 				<Col className="imgCol" lg={8} md={6} sm={12}>
-					<Image
-						className="gameImage"
-						src={props.image}
-						key={props.image}
-					></Image>
+					<Image className="gameImage" src={props.image}></Image>
 					<Image className="gamePegi" src={props.esrb} fluid></Image>
 				</Col>
 				<Col
@@ -40,34 +33,35 @@ const Game = props => {
 						<p className="text-white fs-3 mt-4 mt-md-0 text-center text-md-start">
 							{props.title}
 						</p>
-						{/*props.genres.map(genre => (
-							<p>{genre.name}</p>
-						))*/}
 					</div>
 					<div className="gameShortScreenshots d-none d-sm-block">
 						<Row>
-							{props.short_screenshots.map(screenshot => (
-								<Col className="my-2" sm={6}>
-									<Image
-										key={screenshot.image}
-										className={"gameShortScreenshot"}
-										src={screenshot.image}
-										onClick={imageHandler}
-										fluid
-									></Image>
-								</Col>
-							))}
+							{props.short_screenshots != null
+								? props.short_screenshots.map(screenshot => (
+										<Col className="my-2" sm={6}>
+											<Image
+												key={screenshot.image}
+												className={"gameShortScreenshot"}
+												src={screenshot.image}
+												onClick={imageHandler}
+												fluid
+											></Image>
+										</Col>
+								  ))
+								: ""}
 						</Row>
 					</div>
 					<div className="gamePlatforms hstack justify-content-center justify-content-md-end gap-2 mt-4 mt-md-0">
-						{props.platforms.map(pl => (
-							<Image
-								key={pl.platform.slug}
-								className=""
-								src={"./platforms/" + pl.platform.slug + ".webp"}
-								height={30}
-							></Image>
-						))}
+						{props.platforms != null
+							? props.platforms.map(pl => (
+									<Image
+										key={pl.platform.slug}
+										className=""
+										src={"./platforms/" + pl.platform.slug + ".webp"}
+										height={30}
+									></Image>
+							  ))
+							: ""}
 					</div>
 				</Col>
 			</Row>

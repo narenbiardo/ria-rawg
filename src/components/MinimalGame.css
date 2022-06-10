@@ -4,5 +4,20 @@
 }
 
 .gameCard {
+	position: relative;
 	min-height: 20vh;
+}
+.gameKey {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.gameKey:hover {
+	cursor: pointer;
 }

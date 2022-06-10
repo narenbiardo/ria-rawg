@@ -5,12 +5,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
 const Navegation = props => {
 	return (
 		<Navbar className="mb-2" bg="dark" variant="dark" expand="lg">
 			<Container className="w-75 py-2">
-				<Navbar.Brand href="#">
+				<Navbar.Brand onClick={props.handlerSearchGame}>
 					<img
 						src="rawg-logo.png"
 						height="30"
@@ -25,14 +26,8 @@ const Navegation = props => {
 						type="search"
 						name="buscar"
 						onChange={props.handlerSearchGame}
+						size={25}
 					/>
-					<Button
-						variant="outline-success"
-						onClick={props.handleUnmountGamesCarrousel}
-						className={"ms-3"}
-					>
-						Buscar
-					</Button>
 				</form>
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
