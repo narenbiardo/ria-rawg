@@ -95,7 +95,7 @@ Ahora para ejecutar el programa sólo hace falta ejecutar el comando “npm star
 
 Para conseguir una clave vamos a tener que ir al sitio web de la api “https://rawg.io” y registrarnos.
 
-
+<img src="https://educacion30.b-cdn.net/wp-content/uploads/2019/02/girasoles-978x652.jpg.webp" width="350" alt="accesibility text">
 
 
 Luego de registrados entramos al menú de arriba a la derecha y le damos al botón “Get an API key”,
