@@ -95,7 +95,7 @@ Ahora para ejecutar el programa sólo hace falta ejecutar el comando “npm star
 
 Para conseguir una clave vamos a tener que ir al sitio web de la api “https://rawg.io” y registrarnos.
 
-<img src="https://github.com/narenbiardo/ria-rawg/blob/main/imgRia/Ria1.jpg" width="350" alt="accesibility text">
+<img src="https://github.com/narenbiardo/ria-rawg/blob/main/imgRia/Ria1.jpg" alt="accesibility text">
 
 
 Luego de registrados entramos al menú de arriba a la derecha y le damos al botón “Get an API key”,
