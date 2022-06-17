@@ -1,6 +1,6 @@
 Integrantes:
-Leonardo Arbelo
-Naren Biardo
+Leonardo Arbelo 
+Naren Biardo 
 Gonzalo Cánepa
 
 Para realizar el segundo laboratorio primero estuvimos indagando entre distintas apis hasta que nos decidimos por una la cual tiene una gran base de datos sobre videojuegos, mostrándonos información, imágenes, trailers, entre otras cosas de una gran cantidad de juegos de distintas consolas. Lamentablemente la api es paga pero tiene una versión gratuita la cual a pesar de ser limitada aún así nos permite manejar mucha información de los juegos.
